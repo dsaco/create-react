@@ -2,9 +2,9 @@
   "name": "ds-react-cli",
   "version": "1.2.1",
   "description": "",
-  "main": "ds-rcli.js",
+  "main": "index.js",
   "bin": {
-    "ds-rcli": "ds-rcli.js"
+    "ds-react-cli": "index.js"
   },
   "repository": {
     "type": "git",
