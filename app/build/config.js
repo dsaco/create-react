@@ -1,6 +1,6 @@
 const path = require('path');
 
-const port = 3000;
+const port = 3001;
 const entry = path.resolve(__dirname, '../src/main.jsx');
 const outputPath = path.resolve(__dirname, '../dist');
 const htmlPath = path.resolve(__dirname, '../src/index.html');

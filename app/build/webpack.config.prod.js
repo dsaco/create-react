@@ -17,7 +17,15 @@ module.exports = merge(baseConfig, {
                         loader: MiniCssExtractPlugin.loader
                     },
                     'css-loader',
-                    'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('autoprefixer')
+                            ]                            
+                        }
+                    },  
                     'sass-loader',
                 ],
             },

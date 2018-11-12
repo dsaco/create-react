@@ -10,17 +10,19 @@ module.exports = merge(baseConfig, {
     module: {
         rules: [
             {
-                enforce: "pre",
-                test: /\.jsx?$/,
-                use: 'eslint-loader',
-                exclude: /node_modules/,
-            },
-            {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
                     'css-loader',
-                    'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('autoprefixer')
+                            ]                            
+                        }
+                    },  
                     'sass-loader',
                 ],
             }

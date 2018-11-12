@@ -1,14 +1,11 @@
 {
-  "name": "saga",
+  "name": "react-templates",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "build": "webpack --config build/webpack.config.prod.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "dsaco",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.1.5",
