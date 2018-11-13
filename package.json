@@ -22,8 +22,7 @@
     "commander": "^2.19.0",
     "download-git-repo": "^1.1.0",
     "fs-extra": "^7.0.1",
-    "map-stream": "^0.0.7",
-    "validate-npm-package-name": "^3.0.0",
-    "vinyl-fs": "^3.0.3"
+    "inquirer": "^6.2.0",
+    "validate-npm-package-name": "^3.0.0"
   }
 }
