@@ -12,7 +12,7 @@ if (major < 8) {
     console.error(
         chalk.red(
             `
-            You are running Node 
+            You are running Node
             ${currentNodeVersion}
 
             Create React App requires Node 8 or higher.
