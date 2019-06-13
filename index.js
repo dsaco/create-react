@@ -12,15 +12,14 @@ if (major < 8) {
     console.error(
         chalk.red(
             `
-            You are running Node
-            ${currentNodeVersion}
+当前Node版本为 ${currentNodeVersion}
 
-            Create React App requires Node 8 or higher.
-            Please update your version of Node.
+创建项目需要Node8或以上.
+请升级你的Node.
             `
         )
     );
     process.exit(1);
 }
 
-require('./lib/createReact');
+require('./lib/create');
