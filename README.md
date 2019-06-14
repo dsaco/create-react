@@ -1,13 +1,21 @@
 # React脚手架
 
-## 快速创建
+### 安装
 
-sass + react-router-dom
+npm i -g ds-react-cli
 
-## 标准模式
+### 使用
 
-sass + react-router-dom + redux-saga + eslint
+ds-react-cli appName
 
-## 选择模式
+### 快速模式
 
-sass + react-router-dom + (redux-saga|redux-thunk|react-mobx)? + eslint?
+react-router-dom
+
+### 标准模式
+
+scss + react-router-dom + redux-saga + eslint
+
+### 选择模式
+
+scss? + eslint? + (redux-saga|redux-thunk|react-mobx)? + (ant-design|material-ui)?
