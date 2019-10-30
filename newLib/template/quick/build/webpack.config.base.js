@@ -20,15 +20,34 @@ module.exports = {
                             '@babel/preset-react',
                         ],
                         plugins: [
-                            ['@babel/plugin-proposal-decorators', { legacy: true }],
                             ['@babel/plugin-proposal-class-properties', { loose: true }],
-                            '@babel/plugin-syntax-dynamic-import',
                             '@babel/plugin-transform-runtime',
                             'react-hot-loader/babel',
                         ],
                     },
                 },
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.s?css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('autoprefixer')
+                            ],
+                        },
+                    },
+                    'sass-loader',
+                ],
+            },
+            {
+                test: /\.(gif|jpg|png)$/,
+                use: 'url-loader',
             },
         ],
     },
