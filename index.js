@@ -22,4 +22,4 @@ if (major < 8) {
     process.exit(1);
 }
 
-require('./newLib/create');
+require('./lib/create');
