@@ -20,6 +20,8 @@ module.exports = {
                             '@babel/preset-react',
                         ],
                         plugins: [
+                            '@babel/plugin-proposal-nullish-coalescing-operator',
+                            '@babel/plugin-proposal-optional-chaining',
                             ['@babel/plugin-proposal-class-properties', { loose: true }],
                             '@babel/plugin-transform-runtime',
                             'react-hot-loader/babel',
@@ -38,7 +40,7 @@ module.exports = {
                         options: {
                             ident: 'postcss',
                             plugins: [
-                                require('autoprefixer')
+                                require('autoprefixer'),
                             ],
                         },
                     },
