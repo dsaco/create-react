@@ -8,6 +8,8 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
@@ -18,7 +20,6 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
-    "eslint-config-dsaco": "^1.0.2",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^4.2.0",
@@ -27,6 +28,7 @@
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "redux-logger": "^3.0.6",
     "rimraf": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
@@ -41,6 +43,10 @@
     "@babel/runtime": "^7.6.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-hot-loader": "^4.12.15"
+    "react-hot-loader": "^4.12.15",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   }
 }
