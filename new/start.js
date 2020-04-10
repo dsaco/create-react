@@ -70,8 +70,14 @@ async function createApp() {
 		});
 	});
 	if (ok) {
-		await cSimple(projectName);
-		console.log('success')
+		// await cSimple(projectName);
+		console.log(
+			`
+	cd ${chalk.cyan(projectName)} && npm i
+	
+	npm start
+			`
+		);
 		// if (program.standard) {
 		//     cStandard(projectName);
 		// } else if (program.quick) {

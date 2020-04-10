@@ -9,12 +9,9 @@ const { getGI } = require('./getFile');
 
 const cSimple = async (projectName) => {
 	await _fs.ensureDir(`${projectName}`);
-	await download('dsaco/react-templates', projectName);
-
-	// await
-
-	// await _fs.copy(path.resolve(__dirname, './template/quick'), projectName);
-	// await fs.writeFileSync(`${projectName}/.gitignore`, getGitIgnore(), 'utf-8');
+    await download('dsaco/react-templates', projectName);
+    await fs.writeFileSync(`${projectName}/.gitignore`, getGI(), 'utf-8');
+    await replacePkgName(`${projectName}/package.json`, projectName)
 };
 
 function download(url, dest) {
@@ -31,6 +28,11 @@ function download(url, dest) {
             }
 		});
 	});
+}
+
+async function replacePkgName(path, projectName) {
+    const content = await fs.readFile(path, 'utf-8')
+    await fs.writeFile(path, content.replace('react-templates', projectName), 'utf-8')
 }
 
 module.exports = {
