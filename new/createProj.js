@@ -31,8 +31,8 @@ function download(url, dest) {
 }
 
 async function replacePkgName(path, projectName) {
-    const content = await fs.readFile(path, 'utf-8')
-    await fs.writeFile(path, content.replace('react-templates', projectName), 'utf-8')
+    const content = await fs.readFileSync(path, 'utf-8')
+    await fs.writeFileSync(path, content.replace('react-templates', projectName), 'utf-8')
 }
 
 module.exports = {

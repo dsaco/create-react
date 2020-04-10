@@ -55,6 +55,19 @@ function checkAppName(appName) {
 		process.exit(1);
 	}
 }
+
+function printSuccess(appName) {
+	console.log(
+		`
+	${chalk.cyan('创建成功')}
+
+	cd ${chalk.blue(appName)} && npm i
+
+	npm start
+		`
+	);
+}
+
 checkAppName(projectName);
 
 createApp();
@@ -70,14 +83,8 @@ async function createApp() {
 		});
 	});
 	if (ok) {
-		// await cSimple(projectName);
-		console.log(
-			`
-	cd ${chalk.cyan(projectName)} && npm i
-	
-	npm start
-			`
-		);
+		await cSimple(projectName);
+		printSuccess(projectName);
 		// if (program.standard) {
 		//     cStandard(projectName);
 		// } else if (program.quick) {
