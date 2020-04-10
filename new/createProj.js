@@ -10,7 +10,7 @@ const { getGI } = require('./getFile');
 const cSimple = async (projectName) => {
 	await _fs.ensureDir(`${projectName}`);
     await download('dsaco/react-templates', projectName);
-    await fs.writeFileSync(`${projectName}/.gitignore`, getGI(), 'utf-8');
+    // await fs.writeFileSync(`${projectName}/.gitignore`, getGI(), 'utf-8');
     await replacePkgName(`${projectName}/package.json`, projectName)
 };
 
