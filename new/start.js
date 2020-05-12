@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const validateProjectName = require('validate-npm-package-name');
 
 const packageJson = require('../package.json');
-const { cSimple, cStandard, cMine } = require('./createProj');
+const { cSimple, cStandard, cMine, cAntd } = require('./createProj');
 
 let projectName;
 
@@ -19,10 +19,11 @@ const program = new commander.Command(chalk.cyan(packageJson.name))
 	)
 	.action((name) => (projectName = name))
 	// .option('-m, --mode <type>', `快速模式 ${chalk.magenta('quick')} 、 标准模式 ${chalk.magenta('standard')}` )
-	.option('-q, --quick', `${chalk.magenta('快速模式(默认)')}`)
-	.option('-s, --standard', `${chalk.magenta('标准模式')}`)
-	.option('-m, --mine', `${chalk.magenta('我的模式')}`)
-	.option('-c, --custom', `${chalk.magenta('自定义模式')}`)
+	.option('--simple', `${chalk.magenta('快速模式(默认)')}`)
+	.option('--standard', `${chalk.magenta('标准模式')}`)
+	.option('--antd', `${chalk.magenta('antd-admin')}`)
+	.option('--mine', `${chalk.magenta('我的模式')}`)
+	// .option('-c, --custom', `${chalk.magenta('自定义模式')}`)
 	.parse(process.argv);
 
 if (typeof projectName === 'undefined') {
@@ -84,6 +85,45 @@ async function createApp() {
 		});
 	});
 	if (ok) {
+		if (program.simple) {
+			await cSimple(projectName);
+		} else if (program.mine) {
+			await cMine(projectName);
+		} else if (program.standard) {
+			await cStandard(projectName);
+		} else if (program.antd) {
+			await cAntd(projectName);
+		} else {
+			const { type } = await inquirer.prompt([
+				{
+					type: 'list',
+					name: 'type',
+					choices: [
+						{ name: 'simple' },
+						{ name: 'standard' },
+						{ name: 'antd-admin' },
+						{ name: 'mine' },
+					],
+					filter: (val) => val,
+					message: '请选择一个创建方式',
+				},
+			]);
+			switch (type) {
+				case 'simple':
+					await cSimple(projectName);
+					break;
+				case 'standard':
+					await cStandard(projectName);
+					break;
+				case 'antd-admin':
+					await cAntd(projectName);
+					break;
+				case 'mine':
+					await cMine(projectName);
+					break;
+			}
+		}
+		printSuccess(projectName);
 		if (program.custom) {
 			// const { options } = await inquirer.prompt([
 			//     {
@@ -118,15 +158,6 @@ async function createApp() {
 			// }
 			// cCustom(projectName, useScss, useEslint, dataMode);
 			console.log('暂不支持 = 。=');
-		} else if (program.mine) {
-			await cMine(projectName);
-			printSuccess(projectName);
-		} else if (program.standard) {
-			await cStandard(projectName);
-			printSuccess(projectName);
-		} else {
-			await cSimple(projectName);
-			printSuccess(projectName);
 		}
 	} else {
 		console.error(`

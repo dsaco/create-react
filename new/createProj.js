@@ -9,7 +9,7 @@ const { getGI } = require('./getFile');
 
 const cSimple = async (projectName) => {
 	await _fs.ensureDir(`${projectName}`);
-    await download('dsaco/react-templates', projectName);
+    await download('dsaco/react-templates#simple', projectName);
     await replacePkgName(`${projectName}/package.json`, projectName)
 };
 const cStandard = async (projectName) => {
@@ -20,7 +20,11 @@ const cStandard = async (projectName) => {
 const cMine = async (projectName) => {
 	await _fs.ensureDir(`${projectName}`);
     await download('dsaco/react-templates#mine', projectName);
-    // await fs.writeFileSync(`${projectName}/.gitignore`, getGI(), 'utf-8');
+    await replacePkgName(`${projectName}/package.json`, projectName)
+};
+const cAntd = async (projectName) => {
+	await _fs.ensureDir(`${projectName}`);
+    await download('dsaco/react-templates#ant-admin', projectName);
     await replacePkgName(`${projectName}/package.json`, projectName)
 };
 
@@ -49,4 +53,5 @@ module.exports = {
     cSimple,
     cStandard,
     cMine,
+    cAntd,
 };
