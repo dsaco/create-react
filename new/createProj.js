@@ -12,6 +12,11 @@ const cSimple = async (projectName) => {
     await download('dsaco/react-templates#simple', projectName);
     await replacePkgName(`${projectName}/package.json`, projectName)
 };
+const cBasic = async (projectName) => {
+	await _fs.ensureDir(`${projectName}`);
+    await download('dsaco/react-templates#basic', projectName);
+    await replacePkgName(`${projectName}/package.json`, projectName)
+};
 const cStandard = async (projectName) => {
 	await _fs.ensureDir(`${projectName}`);
     await download('dsaco/react-templates#standard', projectName);
@@ -51,6 +56,7 @@ async function replacePkgName(path, projectName) {
 
 module.exports = {
     cSimple,
+    cBasic,
     cStandard,
     cMine,
     cAntd,

@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const validateProjectName = require('validate-npm-package-name');
 
 const packageJson = require('../package.json');
-const { cSimple, cStandard, cMine, cAntd } = require('./createProj');
+const { cSimple, cBasic, cStandard, cMine, cAntd } = require('./createProj');
 
 let projectName;
 
@@ -20,6 +20,7 @@ const program = new commander.Command(chalk.cyan(packageJson.name))
 	.action((name) => (projectName = name))
 	// .option('-m, --mode <type>', `快速模式 ${chalk.magenta('quick')} 、 标准模式 ${chalk.magenta('standard')}` )
 	.option('--simple', `${chalk.magenta('快速模式(默认)')}`)
+	.option('--basic', `${chalk.magenta('基本模式')}`)
 	.option('--standard', `${chalk.magenta('标准模式')}`)
 	.option('--antd', `${chalk.magenta('antd-admin')}`)
 	.option('--mine', `${chalk.magenta('我的模式')}`)
@@ -87,6 +88,8 @@ async function createApp() {
 	if (ok) {
 		if (program.simple) {
 			await cSimple(projectName);
+		} else if (program.basic) {
+			await cBasic(projectName);
 		} else if (program.mine) {
 			await cMine(projectName);
 		} else if (program.standard) {
@@ -100,6 +103,7 @@ async function createApp() {
 					name: 'type',
 					choices: [
 						{ name: 'simple' },
+						{ name: 'basic' },
 						{ name: 'standard' },
 						{ name: 'antd-admin' },
 						{ name: 'mine' },
@@ -111,6 +115,9 @@ async function createApp() {
 			switch (type) {
 				case 'simple':
 					await cSimple(projectName);
+					break;
+				case 'basic':
+					await cBasic(projectName);
 					break;
 				case 'standard':
 					await cStandard(projectName);
